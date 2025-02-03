@@ -11,9 +11,21 @@ public class ActionOpenDoor : Action
     }
 
     public override void ExcecuteAction() {
-        Debug.Log("Open Door"); 
-        DoorIsOpen = true;
+        if (!DoorIsOpen) {
+            OpenDoor();
+        } else {
+            CloseDoor();
+        }
+    }
+
+    public void OpenDoor() {
         animator.Play("OpenDoor");
+        DoorIsOpen = true;
+    }
+
+    public void CloseDoor() {
+        animator.Play("CloseDoor");
+        DoorIsOpen = false;
     }
 
     public override void StopAction() {}
